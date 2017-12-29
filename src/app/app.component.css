@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    margin-top: 50px;
+}
+
+#text {
+    width: 80%;
+    height: 600px;
+    margin-top: 50px;
+    word-wrap: break-word;
+    margin-left: 10%;
+    background-color: black;
+    color: white;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px;
+    line-height: 20px;
+}

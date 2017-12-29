@@ -26,6 +26,8 @@
             }
             finalTranscripts.replace('full stop', '.');
             finalTranscripts.replace('comma', ',');
+            interimTranscripts.replace('full stop', '.');
+            interimTranscripts.replace('comma', ',');
             textBody.innerHTML = finalTranscripts + '<span style="color:#999">' + interimTranscripts + '</span>';
         };
         speechRecognizer.onerror = function (event) {
