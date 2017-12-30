@@ -70,7 +70,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 exports.i(__webpack_require__("../../../../css-loader/index.js?{\"sourceMap\":false,\"importLoaders\":1}!../../../../postcss-loader/index.js?{\"ident\":\"postcss\"}!../../../../bootstrap/dist/css/bootstrap.css"), "");
 
 // module
-exports.push([module.i, "body {\n    background-color: beige;\n}", ""]);
+exports.push([module.i, "body {\n    background-color: beige;\n}\n\n\ndel {\n    background-color: red;\n}\n\nins {\n    background-color: green;\n}", ""]);
 
 // exports
 

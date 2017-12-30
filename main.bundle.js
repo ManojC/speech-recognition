@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".navbar {\n    background-color: #337ab7;\n}\n\n#btn-test {\n    margin-top: 8px;\n    font-weight: bold;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n}\n\nbutton.navbar-brand {\n    color: white;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\ndiv#text-sample {\n    border-right: thin solid black;\n}\n\np#text, div#text-sample {\n    text-align: justify;\n    height: 600px;\n    max-height: 600px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n}", ""]);
+exports.push([module.i, ".navbar {\n    background-color: #337ab7;\n}\n\n#btn-test {\n    margin-top: 8px;\n    font-weight: bold;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n}\n\nbutton.navbar-brand {\n    color: white;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\np#text, p#text-sample, #result {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result {\n    height: 300px;\n    max-height: 300px;    \n}", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-12\">\n                <button class=\"navbar-brand btn btn-link\">Home</button>\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"navbar-brand btn btn-link\">Login</button>\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"navbar-brand btn btn-link\">Logout</button>\n                <button *ngIf=\"user\" id=\"btn-test\" class=\"btn btn-success pull-right\">Start Test</button>\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right\">Hello {{user?.displayName}}!</span>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3 class=\"text-center\">Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3 class=\"text-center\">Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div id=\"text-sample\" class=\"col-lg-6\">\n            <p>\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies, dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n            </p>\n            <p>\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g. light and heat), magnetic fields and high energy particles (e.g. cosmic rays).\n            </p>\n            <p>\n                The Universe is incredibly huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun. Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky Way galaxy alone.\n            </p>\n            <p>\n                No one knows the exact size of the Universe, because we cannot see the edge – if there is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">speak anything...</p>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-12\">\n                <button class=\"navbar-brand btn btn-link\">Home</button>\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"navbar-brand btn btn-link\">Login</button>\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"navbar-brand btn btn-link\">Logout</button>\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success pull-right' : 'btn btn-danger pull-right'\"\n                    (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'Stop Test'}}\n                </button>\n                <span *ngIf=\"time\" class=\"navbar-brand user-name pull-right\">{{time}}</span>\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right\">Hello {{user?.displayName}}!</span>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <p id=\"text-sample\">\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies, dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g. light and heat), magnetic fields and high energy particles (e.g. cosmic rays).\n                The Universe is incredibly huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun. Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky Way galaxy alone.\n                No one knows the exact size of the Universe, because we cannot see the edge – if there is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">speak anything...</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <div id=\"result\" ></div>\n        </div>\n    </div>\n</div>\n"
 
 /***/ }),
 
@@ -46,8 +46,10 @@ module.exports = "<div class=\"container\">\n    <div class=\"row\">\n        <n
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__ = __webpack_require__("../../../../angularfire2/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase__ = __webpack_require__("../../../../firebase/firebase-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_firebase__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__speech_recognition__ = __webpack_require__("../../../../../src/app/speech-recognition.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_text_diff__ = __webpack_require__("../../../../text-diff/diff.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_text_diff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_text_diff__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__speech_recognition__ = __webpack_require__("../../../../../src/app/speech-recognition.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -63,16 +65,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var AppComponent = (function () {
     function AppComponent(_AngularFireAuth, _db) {
         this._AngularFireAuth = _AngularFireAuth;
         this._db = _db;
+        this.isStopped = true;
         this.window = window;
         this.finalResults = "";
+        this.diff = new __WEBPACK_IMPORTED_MODULE_3_text_diff__();
     }
     AppComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.initialise();
         this._AngularFireAuth.authState.subscribe(function (user) {
             if (user) {
                 _this.updateStorage(user);
@@ -81,12 +85,18 @@ var AppComponent = (function () {
         });
     };
     AppComponent.prototype.initialise = function () {
+        if (this._SpeechRecognition) {
+            return;
+        }
         this.textBody = document.getElementById('text');
-        this._SpeechRecognition = new __WEBPACK_IMPORTED_MODULE_4__speech_recognition__["a" /* SpeechRecognition */]('en-Uk', true, true, 1);
+        this._SpeechRecognition = this._SpeechRecognition || new __WEBPACK_IMPORTED_MODULE_5__speech_recognition__["a" /* SpeechRecognition */]('en-Uk', true, true, 1);
         this._SpeechRecognition.onresult = this.onResult.bind(this);
         this._SpeechRecognition.start();
     };
     AppComponent.prototype.onResult = function (event) {
+        if (this.isStopped) {
+            return;
+        }
         var intermidiateResults = '';
         for (var i = event.resultIndex; i < event.results.length; i++) {
             var transcript = event.results[i][0].transcript;
@@ -146,6 +156,26 @@ var AppComponent = (function () {
             });
         }
     };
+    AppComponent.prototype.timer = function () {
+        var _this = this;
+        this.isStopped = !this.isStopped;
+        if (this.isStopped) {
+            if (this.resetTimer) {
+                clearInterval(this.resetTimer);
+                var textDiff = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
+                document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
+            }
+            return;
+        }
+        this.initialise();
+        var time = 0;
+        this.resetTimer = setInterval(function () {
+            ++time;
+            var minutes = Math.floor(time / 60);
+            var seconds = time % 60;
+            _this.time = (minutes < 10 ? "0" + minutes : minutes) + " : " + (seconds < 10 ? "0" + seconds : seconds);
+        }, 1000);
+    };
     return AppComponent;
 }());
 AppComponent = __decorate([
@@ -154,7 +184,7 @@ AppComponent = __decorate([
         template: __webpack_require__("../../../../../src/app/app.component.html"),
         styles: [__webpack_require__("../../../../../src/app/app.component.css")]
     }),
-    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["b" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["b" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["b" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3_angularfire2_database__["b" /* AngularFireDatabase */]) === "function" && _b || Object])
+    __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["b" /* AngularFireAuth */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1_angularfire2_auth__["b" /* AngularFireAuth */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["b" /* AngularFireDatabase */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_4_angularfire2_database__["b" /* AngularFireDatabase */]) === "function" && _b || Object])
 ], AppComponent);
 
 var _a, _b;
