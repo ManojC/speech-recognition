@@ -1,40 +1,48 @@
-<div class="container">
+<div class="container-fluid">
     <div class="row">
         <nav class="navbar navbar-default col-lg-12">
             <div class="navbar-header col-lg-12">
                 <button class="navbar-brand btn btn-link">Home</button>
                 <button *ngIf="!user" (click)="login();" class="navbar-brand btn btn-link">Login</button>
                 <button *ngIf="user" (click)="logout();" class="navbar-brand btn btn-link">Logout</button>
-                <button *ngIf="user" id="btn-test" class="btn btn-success pull-right">Start Test</button>
+                <button *ngIf="user" id="btn-test" [class]="isStopped ? 'btn btn-success pull-right' : 'btn btn-danger pull-right'"
+                    (click)="timer(isStopped);">
+                    {{isStopped ? 'Start Test' : 'Stop Test'}}
+                </button>
+                <span *ngIf="time" class="navbar-brand user-name pull-right">{{time}}</span>
                 <span *ngIf="user" class="navbar-brand user-name pull-right">Hello {{user?.displayName}}!</span>
             </div>
         </nav>
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <h3 class="text-center">Input</h3>
+            <h3>Input</h3>
         </div>
         <div class="col-lg-6">
-            <h3 class="text-center">Output</h3>
+            <h3>Output</h3>
         </div>
     </div>
     <div class="row">
-        <div id="text-sample" class="col-lg-6">
-            <p>
+        <div class="col-lg-6">
+            <p id="text-sample">
                 The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies, dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.
-            </p>
-            <p>
                 The Universe contains billions of galaxies, each containing millions or billions of stars. The space between the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g. light and heat), magnetic fields and high energy particles (e.g. cosmic rays).
-            </p>
-            <p>
                 The Universe is incredibly huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun. Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky Way galaxy alone.
-            </p>
-            <p>
                 No one knows the exact size of the Universe, because we cannot see the edge – if there is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year is the distance light travels in one year – about 9 trillion km.)
             </p>
         </div>
         <div id="text-generated" class="col-lg-6">
             <p id="text">speak anything...</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h3>Output</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div id="result" ></div>
         </div>
     </div>
 </div>

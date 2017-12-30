@@ -2,3 +2,12 @@
 body {
     background-color: beige;
 }
+
+
+del {
+    background-color: red;
+}
+
+ins {
+    background-color: green;
+}
