@@ -1,18 +1,40 @@
-h1 {
-    text-align: center;
-    margin-top: 50px;
+.navbar {
+    background-color: #337ab7;
 }
 
-#text {
-    width: 80%;
-    height: 600px;
-    margin-top: 50px;
-    word-wrap: break-word;
-    margin-left: 10%;
-    background-color: black;
+#btn-test {
+    margin-top: 8px;
+    font-weight: bold;
+}
+
+span.user-name {
+    color: yellow;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+button.navbar-brand {
     color: white;
+}
+
+h3 {
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+}
+
+div#text-sample {
+    border-right: thin solid black;
+}
+
+p#text, div#text-sample {
+    text-align: justify;
+    height: 600px;
+    max-height: 600px;
+    word-wrap: break-word;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 10px;
-    line-height: 20px;
+    line-height: 25px;
+    font-size: 20px;
 }
