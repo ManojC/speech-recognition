@@ -21,7 +21,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, ".navbar {\n    background-color: #337ab7;\n}\n\n#btn-test {\n    margin-top: 8px;\n    font-weight: bold;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n}\n\nbutton.navbar-brand {\n    color: white;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\np#text, p#text-sample, #result {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result {\n    height: 300px;\n    max-height: 300px;    \n}", ""]);
+exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\np#text, p#text-sample, #result {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result {\n    height: 300px;\n    max-height: 300px;    \n}", ""]);
 
 // exports
 
@@ -34,7 +34,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/app.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-12\">\n                <button class=\"navbar-brand btn btn-link\">Home</button>\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"navbar-brand btn btn-link\">Login</button>\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"navbar-brand btn btn-link\">Logout</button>\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success pull-right' : 'btn btn-danger pull-right'\"\n                    (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'Stop Test'}}\n                </button>\n                <span *ngIf=\"time\" class=\"navbar-brand user-name pull-right\">{{time}}</span>\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right\">Hello {{user?.displayName}}!</span>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <p id=\"text-sample\">\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies, dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g. light and heat), magnetic fields and high energy particles (e.g. cosmic rays).\n                The Universe is incredibly huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun. Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky Way galaxy alone.\n                No one knows the exact size of the Universe, because we cannot see the edge – if there is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">speak anything...</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <div id=\"result\" ></div>\n        </div>\n    </div>\n</div>\n"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2>Speech Recogniser</h2>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'\" (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'End Test'}}\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name\">Time - {{time || '00 : 00'}}</span>\n            </div>\n            <div class=\"col-lg-6\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <p id=\"text-sample\">\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies,\n                dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between\n                the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered\n                particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g.\n                light and heat), magnetic fields and high energy particles (e.g. cosmic rays). The Universe is incredibly\n                huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun.\n                Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky\n                Way galaxy alone. No one knows the exact size of the Universe, because we cannot see the edge – if there\n                is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year\n                is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">recognised speech...</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <h3>Difference</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-12\">\n            <div id=\"result\"></div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -130,6 +130,13 @@ var AppComponent = (function () {
     AppComponent.prototype.logout = function () {
         var _this = this;
         this._AngularFireAuth.auth.signOut().then(function (response) {
+            _this.isStopped = true;
+            _this.time = null;
+            document.getElementById('text').innerText = "recognised speech...";
+            document.getElementById('result').innerHTML = "";
+            if (_this.resetTimer) {
+                clearTimeout(_this.resetTimer);
+            }
             _this.user = null;
             sessionStorage.removeItem('user');
         });
@@ -150,10 +157,7 @@ var AppComponent = (function () {
     };
     AppComponent.prototype.initialiseDatabase = function () {
         if (this.user && this.user.uid) {
-            this.dbList = this._db.list("/" + this.user.uid + "/speech");
-            this.dbList.subscribe(function (response) {
-                console.log(response);
-            });
+            this.dbList = this._db.list("/speech/" + this.user.uid);
         }
     };
     AppComponent.prototype.timer = function () {
@@ -164,6 +168,7 @@ var AppComponent = (function () {
                 clearInterval(this.resetTimer);
                 var textDiff = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
                 document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
+                this.updateData(document.getElementById('result').innerHTML);
             }
             return;
         }
@@ -175,6 +180,11 @@ var AppComponent = (function () {
             var seconds = time % 60;
             _this.time = (minutes < 10 ? "0" + minutes : minutes) + " : " + (seconds < 10 ? "0" + seconds : seconds);
         }, 1000);
+    };
+    AppComponent.prototype.updateData = function (data) {
+        this.dbList.push({ name: this.user.displayName, diff: data }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) { return console.log(error); });
     };
     return AppComponent;
 }());
