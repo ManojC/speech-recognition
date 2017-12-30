@@ -91,6 +91,13 @@ export class AppComponent implements OnInit {
 
     private logout(): void {
         this._AngularFireAuth.auth.signOut().then((response: any) => {
+            this.isStopped = true;
+            this.time = null;
+            document.getElementById('text').innerText = "speak anything...";
+            document.getElementById('result').innerHTML = "";
+            if (this.resetTimer) {
+                clearTimeout(this.resetTimer);
+            }
             this.user = null;
             sessionStorage.removeItem('user');
         });
@@ -114,10 +121,7 @@ export class AppComponent implements OnInit {
 
     private initialiseDatabase(): void {
         if (this.user && this.user.uid) {
-            this.dbList = this._db.list(`/${this.user.uid}/speech`);
-            this.dbList.subscribe((response: any[]) => {
-                console.log(response);
-            });
+            this.dbList = this._db.list(`/speech/${this.user.uid}`);
         }
     }
 
@@ -126,8 +130,9 @@ export class AppComponent implements OnInit {
         if (this.isStopped) {
             if (this.resetTimer) {
                 clearInterval(this.resetTimer);
-                var textDiff = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
+                let textDiff: string = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
                 document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
+                this.updateData(document.getElementById('result').innerHTML);
             }
             return;
         }
@@ -139,5 +144,11 @@ export class AppComponent implements OnInit {
             let seconds: number = time % 60;
             this.time = `${minutes < 10 ? `0${minutes}` : minutes} : ${seconds < 10 ? `0${seconds}` : seconds}`;
         }, 1000);
+    }
+
+    private updateData(data:  string): void {
+        this.dbList.push({name:  this.user.displayName, diff: data}).then((response: any) => {
+            console.log(response);
+        }).catch((error: any) => console.log(error));
     }
 }

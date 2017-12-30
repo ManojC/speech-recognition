@@ -1,20 +1,26 @@
+h2 {
+    margin:  0;
+    margin: 15px 0;
+    color: white;
+    font-weight: bold;
+}
+
 .navbar {
     background-color: #337ab7;
 }
 
-#btn-test {
-    margin-top: 8px;
+button {
+    margin-top: 12px;
     font-weight: bold;
+    font-size: 20px;
 }
 
 span.user-name {
     color: yellow;
     font-weight: bold;
     text-transform: capitalize;
-}
-
-button.navbar-brand {
-    color: white;
+    margin-top: 8px;
+    font-size: 25px;
 }
 
 h3 {
