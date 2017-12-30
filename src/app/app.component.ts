@@ -93,7 +93,7 @@ export class AppComponent implements OnInit {
         this._AngularFireAuth.auth.signOut().then((response: any) => {
             this.isStopped = true;
             this.time = null;
-            document.getElementById('text').innerText = "speak anything...";
+            document.getElementById('text').innerText = "recognised speech...";
             document.getElementById('result').innerHTML = "";
             if (this.resetTimer) {
                 clearTimeout(this.resetTimer);
