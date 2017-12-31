@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="row">
+        <nav class="navbar navbar-default col-lg-12">
+            <div class="navbar-header col-lg-2">
+                <h2 (click)="home()">Speech Recogniser</h2>
+            </div>
+            <div class="col-lg-2">
+                <button *ngIf="user" class="btn btn-success col-lg-8 pull-right" (click)="typingTest()">
+                    Typing Test
+                </button>
+            </div>
+            <div class="col-lg-2">
+                <button *ngIf="user" class="btn btn-success col-lg-8 pull-left" (click)="speechTest()">
+                    Speech Test
+                </button>
+            </div>
+            <div class="col-lg-5">
+                <span *ngIf="user" class="navbar-brand user-name pull-right text-right">Hello {{user?.displayName}}!</span>
+            </div>
+            <div class="col-lg-1">
+                <button *ngIf="user" (click)="logout();" class="btn btn-danger pull-right col-lg-12">Logout</button>
+            </div>
+            <div [class]="user ? 'col-lg-1' : 'col-lg-10'">
+                <button *ngIf="!user" (click)="login();" class="btn btn-success pull-right">Login</button>
+            </div>
+        </nav>
+    </div>
+</div>

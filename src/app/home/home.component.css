@@ -1,0 +1,25 @@
+h2 {
+    margin:  0;
+    margin: 15px 0;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.navbar {
+    background-color: #337ab7;
+}
+
+button {
+    margin-top: 12px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+span.user-name {
+    color: yellow;
+    font-weight: bold;
+    text-transform: capitalize;
+    margin-top: 8px;
+    font-size: 25px;
+}

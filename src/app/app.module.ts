@@ -8,10 +8,16 @@ import { AngularFireAuthModule } from "angularfire2/auth";
 import { environment } from "../environments/environment";
 
 import { AppComponent } from './app.component';
+import { SpeechComponent } from './speech/speech.component';
+import { KeyboardComponent } from './keyboard/keyboard.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
     declarations: [
-        AppComponent
+        AppComponent,
+        SpeechComponent,
+        KeyboardComponent,
+        HomeComponent
     ],
     imports: [
         BrowserModule,
@@ -21,8 +27,16 @@ import { AppComponent } from './app.component';
         AngularFireAuthModule,
         RouterModule.forRoot([
             {
+                path: 'speech',
+                component: SpeechComponent
+            },
+            {
+                path: 'typing',
+                component: KeyboardComponent
+            },
+            {
                 path: '**',
-                component: AppComponent
+                component: HomeComponent
             }
         ])
     ],

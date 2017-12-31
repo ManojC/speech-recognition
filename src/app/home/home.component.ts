@@ -4,16 +4,16 @@ import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase'
 
 @Component({
-    selector: 'app-root',
-    templateUrl: './app.component.html',
-    styleUrls: ['./app.component.css']
+    selector: 'app-home',
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
+export class HomeComponent implements OnInit {
 
     private user: any;
-    
+
     constructor(private _AngularFireAuth: AngularFireAuth,
-        private _Router: Router) {}
+        private _Router: Router) { }
 
     public ngOnInit(): void {
         this._AngularFireAuth.authState.subscribe((user: firebase.User) => {
