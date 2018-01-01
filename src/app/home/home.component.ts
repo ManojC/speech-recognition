@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from "@angular/router";
 import { AngularFireAuth } from "angularfire2/auth";
 import * as firebase from 'firebase'
+import { SpeechRecognition } from "../speech-recognition";
 
 @Component({
     selector: 'app-home',
@@ -11,6 +12,8 @@ import * as firebase from 'firebase'
 export class HomeComponent implements OnInit {
 
     private user: any;
+    private _SpeechRecognition: SpeechRecognition;
+    private translatedtext: string = "";
 
     constructor(private _AngularFireAuth: AngularFireAuth,
         private _Router: Router) { }
@@ -24,11 +27,60 @@ export class HomeComponent implements OnInit {
                     phoneNumber: user.phoneNumber,
                     photoURL: user.photoURL,
                     providerId: user.providerId,
-                    uid: user.uid
+                    uid: user.uid,
+                    practiceTestPassed: false
                 };
                 sessionStorage.setItem('user', JSON.stringify(this.user));
+                this.user.practiceTestPassed = !!sessionStorage.getItem('practiceTestPassed');
             }
         });
+    }
+
+    private startSpeech(answerNumber: number) {
+        if (!this.user.practiceTestPassed) {
+            this.initialise();
+        }
+    }
+
+    private endSpeech() {
+        this.checkResult();
+        this._SpeechRecognition.onresult = null;
+    }
+
+    private initialise(): void {
+        document.getElementById("answer").innerHTML= "";
+        this.translatedtext = "";
+        if (this._SpeechRecognition) {
+            this._SpeechRecognition.onresult = this.onResult.bind(this);
+            return;
+        }
+        this._SpeechRecognition = this._SpeechRecognition || new SpeechRecognition('en-GB', true, true, 1);
+        this._SpeechRecognition.onresult = this.onResult.bind(this);
+        this._SpeechRecognition.start();
+    }
+
+    private onResult(event: any): void {
+        var intermidiateResults = '';
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+            var transcript = event.results[i][0].transcript;
+            transcript.replace("\n", "<br>");
+            if (event.results[i].isFinal) {
+                this.translatedtext += transcript;
+            } else {
+                intermidiateResults += transcript;
+            }
+        }
+        this.translatedtext = this.translatePanctuations(this.translatedtext);
+        intermidiateResults = this.translatePanctuations(intermidiateResults);
+
+        document.getElementById("answer").innerHTML = this.translatedtext + '<span style="color:#777">' + intermidiateResults + '</span>';
+    }
+
+    private checkResult() {
+        if (document.getElementById("answer").innerText === document.getElementById("question").innerText) {
+            this.user.practiceTestPassed = true;
+            sessionStorage.setItem('practiceTestPassed', this.user.practiceTestPassed);
+        }
     }
 
     private translatePanctuations(message: string): string {
@@ -47,18 +99,21 @@ export class HomeComponent implements OnInit {
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
 
+        message = message.charAt(0).toUpperCase() + message.slice(1);
+
         return message.trim();
+    }
+
+    private login(): void {
+        this._AngularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     }
 
     private logout(): void {
         this._AngularFireAuth.auth.signOut().then((response: any) => {
             this.user = null;
             sessionStorage.removeItem('user');
+            sessionStorage.removeItem('practiceTestPassed');
         });
-    }
-
-    private login(): void {
-        this._AngularFireAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
     }
 
     private home(): void {

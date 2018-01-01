@@ -30,7 +30,7 @@ h3 {
     font-weight: bold;
 }
 
-p#text, p#text-sample, #result, #analysis {
+p#text, #result, #analysis {
     border: solid thin black;
     text-align: justify;
     height: 400px;

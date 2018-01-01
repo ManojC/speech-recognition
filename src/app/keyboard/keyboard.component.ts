@@ -6,13 +6,14 @@ import * as Diff from "text-diff";
 
 import { AngularFireDatabase } from 'angularfire2/database';
 import { Speech } from "../models/speech.model";
+import { BaseComponent } from "../base.component";
 
 @Component({
     selector: 'app-keyboard',
     templateUrl: './keyboard.component.html',
     styleUrls: ['./keyboard.component.css']
 })
-export class KeyboardComponent implements OnInit {
+export class KeyboardComponent extends BaseComponent implements OnInit {
 
     private dbList: any;
     private user: any;
@@ -29,6 +30,7 @@ export class KeyboardComponent implements OnInit {
     constructor(private _AngularFireAuth: AngularFireAuth,
         private _db: AngularFireDatabase,
         private _Router: Router) {
+        super();
         this.diff = new Diff();
     }
 
@@ -65,7 +67,17 @@ export class KeyboardComponent implements OnInit {
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
 
+        message = message.replace('universe', 'Universe');
+
+        message = this.titleCase(message);
+
         return message.trim();
+    }
+
+    private titleCase(message: string) {
+        return message.split('. ').map(function (sentence: string) {
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        }).join('. ');
     }
 
     private logout(): void {
@@ -112,10 +124,10 @@ export class KeyboardComponent implements OnInit {
 
     private processData() {
         clearInterval(this.resetTimer);
-        let textDiff: string = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text')['value']);
+        let textDiff: string = this.diff.main(this.sampleText, document.getElementById('text')['value']);
         document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
 
-        let sampleTextArray: Array<string> = document.getElementById('text-sample').innerText.split(' ');
+        let sampleTextArray: Array<string> = this.sampleText.split(' ');
         let recognisedTextArray: Array<string> = document.getElementById('text')['value'].split(' ');
 
         this.speech = new Speech();

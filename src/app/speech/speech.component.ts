@@ -7,13 +7,14 @@ import * as Diff from "text-diff";
 import { AngularFireDatabase } from 'angularfire2/database';
 import { SpeechRecognition } from "../speech-recognition";
 import { Speech } from "../models/speech.model";
+import { BaseComponent } from "../base.component";
 
 @Component({
     selector: 'app-recognition',
     templateUrl: './speech.component.html',
     styleUrls: ['./speech.component.css']
 })
-export class SpeechComponent implements OnInit {
+export class SpeechComponent extends BaseComponent implements OnInit {
 
     private _SpeechRecognition: SpeechRecognition;
     private dbList: any;
@@ -31,6 +32,7 @@ export class SpeechComponent implements OnInit {
     constructor(private _AngularFireAuth: AngularFireAuth,
         private _db: AngularFireDatabase,
             private _Router: Router) { 
+        super();
         this.diff = new Diff();
     }
 
@@ -55,7 +57,7 @@ export class SpeechComponent implements OnInit {
         if (this._SpeechRecognition) {
             return;
         }
-        this._SpeechRecognition = this._SpeechRecognition || new SpeechRecognition('en-Uk', true, true, 1);
+        this._SpeechRecognition = this._SpeechRecognition || new SpeechRecognition('en-GB', true, true, 1);
         this._SpeechRecognition.onresult = this.onResult.bind(this);
         this._SpeechRecognition.start();
         this.speech = null;
@@ -96,7 +98,17 @@ export class SpeechComponent implements OnInit {
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
 
+        message = message.replace('universe', 'Universe');
+
+        message = this.titleCase(message);
+
         return message.trim();
+    }
+
+    private titleCase(message: string) {
+        return message.split('. ').map(function (sentence: string) {
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        }).join('. ');
     }
 
     private logout(): void {
@@ -144,10 +156,10 @@ export class SpeechComponent implements OnInit {
 
     private processData() {
         clearInterval(this.resetTimer);
-        let textDiff: string = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
+        let textDiff: string = this.diff.main(this.sampleText, document.getElementById('text').innerText);
         document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
 
-        let sampleTextArray: Array<string> = document.getElementById('text-sample').innerText.split(' ');
+        let sampleTextArray: Array<string> = this.sampleText.split(' ');
         let recognisedTextArray: Array<string> = document.getElementById('text').innerText.split(' ');
 
         this.speech = new Speech();

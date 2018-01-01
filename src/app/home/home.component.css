@@ -1,4 +1,4 @@
-h2 {
+div.navbar-header h2 {
     margin:  0;
     margin: 15px 0;
     color: white;
@@ -11,7 +11,7 @@ h2 {
 }
 
 button {
-    margin-top: 12px;
+    margin-top: 10px;
     font-weight: bold;
     font-size: 20px;
 }
@@ -22,4 +22,43 @@ span.user-name {
     text-transform: capitalize;
     margin-top: 8px;
     font-size: 25px;
+}
+
+ul {
+    font-size: 18px;
+}
+
+li {
+    margin-top: 5px;
+}
+
+button.btn-sm {
+    margin-top: 0;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.question, .answer {
+    margin-top: 10px;
+    height: 50px;
+    padding: 10px;
+    color: white;
+    background-color: black;
+    font-size: 18px;
+}
+
+.success-test, .error-test {
+    color: green;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.error-test {
+    color: red;
+}
+
+.test {
+    font-weight: bold;
+    font-size: 20px;
+    margin-top: 20px;
 }

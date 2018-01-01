@@ -3,7 +3,7 @@ export class SpeechRecognition {
     public constructor(lang?: string, continuous?: boolean, interimResults?: boolean, maxAlternatives?: number) {
         if ("webkitSpeechRecognition" in window) {
             this.initialise();
-            this._SpeechRecognition.lang = lang || 'en-UK';
+            this._SpeechRecognition.lang = 'en-IN';
             this._SpeechRecognition.continuous = !!continuous;
             this._SpeechRecognition.interimResults = !!interimResults;
             this._SpeechRecognition.maxAlternatives = maxAlternatives || 1;

@@ -2,15 +2,15 @@
     <div class="row">
         <nav class="navbar navbar-default col-lg-12">
             <div class="navbar-header col-lg-2">
-                <h2 (click)="home()">Speech Recogniser</h2>
+                <h2 (click)="home()">Home Page</h2>
             </div>
             <div class="col-lg-2">
-                <button *ngIf="user" class="btn btn-success col-lg-8 pull-right" (click)="typingTest()">
+                <button *ngIf="user?.practiceTestPassed" class="btn btn-success col-lg-6" (click)="typingTest()">
                     Typing Test
                 </button>
             </div>
             <div class="col-lg-2">
-                <button *ngIf="user" class="btn btn-success col-lg-8 pull-left" (click)="speechTest()">
+                <button *ngIf="user?.practiceTestPassed" class="btn btn-success col-lg-6" (click)="speechTest()">
                     Speech Test
                 </button>
             </div>
@@ -24,5 +24,154 @@
                 <button *ngIf="!user" (click)="login();" class="btn btn-success pull-right">Login</button>
             </div>
         </nav>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><u><b>Instructions</b></u> :</h3>
+                </div>
+                <div class="col-lg-12">
+                    <ul>
+                        <li>This application works <b>only on chrome browser.</b></li>
+                        <li>This application will ask for <b>permission to access microphone.</b></li>
+                        <li>The test involves 2 sub tests - <b>Typing</b> & <b>Speech Recognition.</b></li>
+                        <li>
+                            To start the test, click
+                            <button class="btn btn-success btn-sm">Login</button>
+                            button to log in using your <b>google account.</b></li>
+                        <li>After login, a small practice task will appear on the right side of the window.</li>
+                        <li>
+                            Once the practice task is completed,
+                            <button class="btn btn-success btn-sm">Typing Test</button> & 
+                            <button class="btn btn-success btn-sm">Speech Test</button> 
+                            buttons will appear.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><u><b>Typing Task</b></u> :</h3>
+                </div>
+                <div class="col-lg-12">
+                    <ul>
+                        <li>
+                            click
+                            <button class="btn btn-success btn-sm">Typing Test</button>
+                            button (provided on the top of home window) to navigate to this task.
+                        </li>
+                        <li>
+                            Click
+                            <button class="btn btn-success btn-sm">Start Task</button>
+                            button (provided on the top of typing task window) to start the task.
+                        </li>
+                        <li>
+                            A timer will start as soon as 
+                            <button class="btn btn-success btn-sm">Start Task</button>
+                            button is pressed.
+                        </li>
+                        <li>
+                            Start typing the text (provided in left box), in the text box on the right side
+                        </li>
+                        <li>
+                            Press
+                            <button class="btn btn-danger btn-sm"> End Task </button>
+                            button to finish the test & check the results.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <h3><u><b>Speech Task</b></u> :</h3>
+                </div>
+                <div class="col-lg-12">
+                    <ul>
+                        <li>
+                            click
+                            <button class="btn btn-success btn-sm">Speech Test</button>
+                            button (provided on the top of home window) to navigate to this task.
+                        </li>
+                        <li>
+                            Click
+                            <button class="btn btn-success btn-sm">Start Task</button>
+                            button (provided on the top of speech task window) to start the task.
+                        </li>
+                        <li>
+                            A timer will start &
+                            <img src="./assets/speech-icon.png" alt="speech icon">
+                            icon will appear on browser tab once
+                            <button class="btn btn-success btn-sm">Start Task</button>
+                            button is pressed.
+                        </li>
+                        <li>
+                            Start reading the text (provided in left box) loudly.
+                        </li>
+                        <li>
+                            The  spoken words will appear in the right box.
+                        </li>
+                        <li>
+                            Press
+                            <button class="btn btn-danger btn-sm"> End Task </button>
+                            button to finish the test & check the results.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div *ngIf="user" class="col-lg-6">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <h2><b>Practice Test</b></h2>
+                </div>
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-lg-12 test">
+                            <ul>
+                                <li>
+                                    Press this button to start the test (press again to restart).
+                                    <button class="btn btn-success btn-sm" (click)="startSpeech()">Start Test</button>
+                                </li>
+                                <li>
+                                    Read the text loudly.
+                                </li>
+                                <li>
+                                    Read panctuations (e.g. read  '.' as fullstop & ',' as comma).
+                                </li>
+                                <li>
+                                    Press this button to end the test.
+                                    <button class="btn btn-danger btn-sm" (click)="endSpeech(1)">End Test</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="question" id="question">
+                                    Elephant, lion, horse, dog, cat are animals.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="answer" class="answer">
+                                {{user?.practiceTestPassed ? 'Elephant, lion, horse, dog, cat are animals.' : ''}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="answer" class="success-test" *ngIf="user?.practiceTestPassed">
+                                Test passed successfully! Go for the main tests.
+                            </div>
+                            <div id="answer" class="error-test" *ngIf="!user?.practiceTestPassed">
+                                Text is not matching!!
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
