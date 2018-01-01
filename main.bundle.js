@@ -212,6 +212,22 @@ AppModule = __decorate([
 
 /***/ }),
 
+/***/ "../../../../../src/app/base.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BaseComponent; });
+var BaseComponent = (function () {
+    function BaseComponent() {
+        this.sampleText = "The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies, dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist. The Universe contains billions of galaxies, each containing millions or billions of stars. The space between the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation, magnetic fields and high energy particles. The Universe is incredibly huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun. No one knows the exact size of the Universe, because we cannot  see the edge if there is one. All we do know is that the visible Universe is at least 93 billion  light years across.";
+    }
+    return BaseComponent;
+}());
+
+//# sourceMappingURL=base.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/home/home.component.css":
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -220,7 +236,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}", ""]);
+exports.push([module.i, "div.navbar-header h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 10px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nul {\n    font-size: 18px;\n}\n\nli {\n    margin-top: 5px;\n}\n\nbutton.btn-sm {\n    margin-top: 0;\n    font-size: 12px;\n    font-weight: bold;\n}\n\n.question, .answer {\n    margin-top: 10px;\n    height: 50px;\n    padding: 10px;\n    color: white;\n    background-color: black;\n    font-size: 18px;\n}\n\n.success-test, .error-test {\n    color: green;\n    font-weight: bold;\n    font-size: 20px;\n}\n\n.error-test {\n    color: red;\n}\n\n.test {\n    font-weight: bold;\n    font-size: 20px;\n    margin-top: 20px;\n}", ""]);
 
 // exports
 
@@ -233,7 +249,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Speech Recogniser</h2>\n            </div>\n            <div class=\"col-lg-2\">\n                <button *ngIf=\"user\" class=\"btn btn-success col-lg-8 pull-right\" (click)=\"typingTest()\">\n                    Typing Test\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <button *ngIf=\"user\" class=\"btn btn-success col-lg-8 pull-left\" (click)=\"speechTest()\">\n                    Speech Test\n                </button>\n            </div>\n            <div class=\"col-lg-5\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n</div>"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Home Page</h2>\n            </div>\n            <div class=\"col-lg-2\">\n                <button *ngIf=\"user?.practiceTestPassed\" class=\"btn btn-success col-lg-6\" (click)=\"typingTest()\">\n                    Typing Test\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <button *ngIf=\"user?.practiceTestPassed\" class=\"btn btn-success col-lg-6\" (click)=\"speechTest()\">\n                    Speech Test\n                </button>\n            </div>\n            <div class=\"col-lg-5\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <div class=\"row\">\n                <div class=\"col-lg-12\">\n                    <h3><u><b>Instructions</b></u> :</h3>\n                </div>\n                <div class=\"col-lg-12\">\n                    <ul>\n                        <li>This application works <b>only on chrome browser.</b></li>\n                        <li>This application will ask for <b>permission to access microphone.</b></li>\n                        <li>The test involves 2 sub tests - <b>Typing</b> & <b>Speech Recognition.</b></li>\n                        <li>\n                            To start the test, click\n                            <button class=\"btn btn-success btn-sm\">Login</button>\n                            button & log in using your <b>google account.</b></li>\n                        <li>After login, a small practice task will appear on the right side of the window.</li>\n                        <li>\n                            Once the practice task is completed,\n                            <button class=\"btn btn-success btn-sm\">Typing Test</button> & \n                            <button class=\"btn btn-success btn-sm\">Speech Test</button> \n                            buttons will appear.\n                        </li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-lg-12\">\n                    <h3><u><b>Typing Task</b></u> :</h3>\n                </div>\n                <div class=\"col-lg-12\">\n                    <ul>\n                        <li>\n                            click\n                            <button class=\"btn btn-success btn-sm\">Typing Test</button>\n                            button (provided on the top of home window) to navigate to this task.\n                        </li>\n                        <li>\n                            Click\n                            <button class=\"btn btn-success btn-sm\">Start Task</button>\n                            button (provided on the top of typing task window) to start the task.\n                        </li>\n                        <li>\n                            A timer will start as soon as \n                            <button class=\"btn btn-success btn-sm\">Start Task</button>\n                            button is pressed.\n                        </li>\n                        <li>\n                            Start typing the text (provided in left box), in the text box on the right side\n                        </li>\n                        <li>\n                            Press\n                            <button class=\"btn btn-danger btn-sm\"> End Task </button>\n                            button to finish the test & check the results.\n                        </li>\n                    </ul>\n                </div>\n            </div>\n            <div class=\"row\">\n                <div class=\"col-lg-12\">\n                    <h3><u><b>Speech Task</b></u> :</h3>\n                </div>\n                <div class=\"col-lg-12\">\n                    <ul>\n                        <li>\n                            click\n                            <button class=\"btn btn-success btn-sm\">Speech Test</button>\n                            button (provided on the top of home window) to navigate to this task.\n                        </li>\n                        <li>\n                            Click\n                            <button class=\"btn btn-success btn-sm\">Start Task</button>\n                            button (provided on the top of speech task window) to start the task.\n                        </li>\n                        <li>\n                            A timer will start &\n                            <img src=\"./assets/speech-icon.png\" alt=\"speech icon\">\n                            icon will appear on browser tab once\n                            <button class=\"btn btn-success btn-sm\">Start Task</button>\n                            button is pressed.\n                        </li>\n                        <li>\n                            Start reading the text (provided in left box) loudly.\n                        </li>\n                        <li>\n                            The  spoken words will appear in the right box.\n                        </li>\n                        <li>\n                            Press\n                            <button class=\"btn btn-danger btn-sm\"> End Task </button>\n                            button to finish the test & check the results.\n                        </li>\n                    </ul>\n                </div>\n            </div>\n        </div>\n        <div *ngIf=\"user\" class=\"col-lg-6\">\n            <div class=\"row\">\n                <div class=\"col-lg-12 text-center\">\n                    <h2><b>Practice Test</b></h2>\n                </div>\n                <div class=\"col-lg-12\">\n                    <div class=\"row\">\n                        <div class=\"col-lg-12 test\">\n                            <ul>\n                                <li>\n                                    Press this button to start the test (press again to restart).\n                                    <button class=\"btn btn-success btn-sm\" (click)=\"startSpeech()\">Start Test</button>\n                                </li>\n                                <li>\n                                    Read the text loudly.\n                                </li>\n                                <li>\n                                    Read panctuations (e.g. read  '.' as fullstop & ',' as comma).\n                                </li>\n                                <li>\n                                    Press this button to end the test.\n                                    <button class=\"btn btn-danger btn-sm\" (click)=\"endSpeech(1)\">End Test</button>\n                                </li>\n                            </ul>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                            <div class=\"question\" id=\"question\">\n                                    Elephant, lion, horse, dog, cat are animals.\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                            <div id=\"answer\" class=\"answer\">\n                                {{user?.practiceTestPassed ? 'Elephant, lion, horse, dog, cat are animals.' : ''}}\n                            </div>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"col-lg-12\">\n                            <div id=\"answer\" class=\"success-test\" *ngIf=\"user?.practiceTestPassed\">\n                                Test passed successfully! Go for the main tests.\n                            </div>\n                            <div id=\"answer\" class=\"error-test\" *ngIf=\"!user?.practiceTestPassed\">\n                                Text is not matching!!\n                            </div>\n                        </div>\n                    </div>\n                </div>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -246,6 +262,7 @@ module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n    
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_angularfire2_auth__ = __webpack_require__("../../../../angularfire2/auth/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase__ = __webpack_require__("../../../../firebase/firebase-browser.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_firebase___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3_firebase__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__speech_recognition__ = __webpack_require__("../../../../../src/app/speech-recognition.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return HomeComponent; });
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -260,10 +277,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
 var HomeComponent = (function () {
     function HomeComponent(_AngularFireAuth, _Router) {
         this._AngularFireAuth = _AngularFireAuth;
         this._Router = _Router;
+        this.translatedtext = "";
     }
     HomeComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -275,11 +294,55 @@ var HomeComponent = (function () {
                     phoneNumber: user.phoneNumber,
                     photoURL: user.photoURL,
                     providerId: user.providerId,
-                    uid: user.uid
+                    uid: user.uid,
+                    practiceTestPassed: false
                 };
                 sessionStorage.setItem('user', JSON.stringify(_this.user));
+                _this.user.practiceTestPassed = !!sessionStorage.getItem('practiceTestPassed');
             }
         });
+    };
+    HomeComponent.prototype.startSpeech = function (answerNumber) {
+        if (!this.user.practiceTestPassed) {
+            this.initialise();
+        }
+    };
+    HomeComponent.prototype.endSpeech = function () {
+        this.checkResult();
+        this._SpeechRecognition.onresult = null;
+    };
+    HomeComponent.prototype.initialise = function () {
+        document.getElementById("answer").innerHTML = "";
+        this.translatedtext = "";
+        if (this._SpeechRecognition) {
+            this._SpeechRecognition.onresult = this.onResult.bind(this);
+            return;
+        }
+        this._SpeechRecognition = this._SpeechRecognition || new __WEBPACK_IMPORTED_MODULE_4__speech_recognition__["a" /* SpeechRecognition */]('en-GB', true, true, 1);
+        this._SpeechRecognition.onresult = this.onResult.bind(this);
+        this._SpeechRecognition.start();
+    };
+    HomeComponent.prototype.onResult = function (event) {
+        var intermidiateResults = '';
+        for (var i = event.resultIndex; i < event.results.length; i++) {
+            var transcript = event.results[i][0].transcript;
+            transcript.replace("\n", "<br>");
+            if (event.results[i].isFinal) {
+                this.translatedtext += transcript;
+            }
+            else {
+                intermidiateResults += transcript;
+            }
+        }
+        this.translatedtext = this.translatePanctuations(this.translatedtext);
+        intermidiateResults = this.translatePanctuations(intermidiateResults);
+        document.getElementById("answer").innerHTML = this.translatedtext + '<span style="color:#777">' + intermidiateResults + '</span>';
+    };
+    HomeComponent.prototype.checkResult = function () {
+        if (document.getElementById("answer").innerText === document.getElementById("question").innerText) {
+            this.user.practiceTestPassed = true;
+            sessionStorage.setItem('practiceTestPassed', this.user.practiceTestPassed);
+        }
     };
     HomeComponent.prototype.translatePanctuations = function (message) {
         message = message.replace(/full stop/ig, '.');
@@ -294,17 +357,19 @@ var HomeComponent = (function () {
         message = message.replace(',  ', ', ');
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
+        message = message.charAt(0).toUpperCase() + message.slice(1);
         return message.trim();
+    };
+    HomeComponent.prototype.login = function () {
+        this._AngularFireAuth.auth.signInWithPopup(new __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].GoogleAuthProvider());
     };
     HomeComponent.prototype.logout = function () {
         var _this = this;
         this._AngularFireAuth.auth.signOut().then(function (response) {
             _this.user = null;
             sessionStorage.removeItem('user');
+            sessionStorage.removeItem('practiceTestPassed');
         });
-    };
-    HomeComponent.prototype.login = function () {
-        this._AngularFireAuth.auth.signInWithPopup(new __WEBPACK_IMPORTED_MODULE_3_firebase__["auth"].GoogleAuthProvider());
     };
     HomeComponent.prototype.home = function () {
         this._Router.navigate(['']);
@@ -339,7 +404,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\ntextarea#text, p#text-sample, #result, #analysis {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result, #analysis {\n    height: 300px;\n    max-height: 300px;    \n}\n\nli {\n    margin-top: 10px;\n}", ""]);
+exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\ntextarea#text, #result, #analysis {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result, #analysis {\n    height: 300px;\n    max-height: 300px;    \n}\n\nli {\n    margin-top: 10px;\n}", ""]);
 
 // exports
 
@@ -352,7 +417,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/keyboard/keyboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Speech Recogniser</h2>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'\" (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'End Test'}}\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name\">Time - {{time || '00 : 00'}}</span>\n            </div>\n            <div class=\"col-lg-6\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <p id=\"text-sample\">\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies,\n                dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between\n                the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered\n                particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g.\n                light and heat), magnetic fields and high energy particles (e.g. cosmic rays). The Universe is incredibly\n                huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun.\n                Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky\n                Way galaxy alone. No one knows the exact size of the Universe, because we cannot see the edge – if there\n                is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year\n                is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <textarea [disabled]=\"isStopped\" class=\"col-lg-12\" id=\"text\"></textarea>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <h3>Difference</h3>\n        </div>\n        <div class=\"col-lg-4\">\n            <h3>Analysis</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <div id=\"result\"></div>\n        </div>\n        <div class=\"col-lg-4\">\n            <div id=\"analysis\">\n                <br>\n                <ul *ngIf=\"speech\" class=\"col-lg-offset-1 col-lg-9\">\n                    <li>\n                        <span> Actual Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.actualWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Recognised Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.recognisedWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Correct Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.correctWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> accuracy - </span>\n                        <span class=\"pull-right\"> {{speech.accuracy}}% </span>\n                    </li>\n                    <li>\n                        <span> Completion Time - </span>\n                        <span class=\"pull-right\"> {{speech.completionTime}} seconds </span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Home Page</h2>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'\" (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'End Test'}}\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name\">Time - {{time || '00 : 00'}}</span>\n            </div>\n            <div class=\"col-lg-6\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Sample</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>User Input</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <img id=\"image-sample\" src=\"./assets/sample.png\" alt=\"sample-text\">\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <textarea spellcheck=\"false\" [disabled]=\"isStopped\" class=\"col-lg-12\" id=\"text\"></textarea>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <h3>Difference</h3>\n        </div>\n        <div class=\"col-lg-4\">\n            <h3>Analysis</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <div id=\"result\"></div>\n        </div>\n        <div class=\"col-lg-4\">\n            <div id=\"analysis\">\n                <br>\n                <ul *ngIf=\"speech\" class=\"col-lg-offset-1 col-lg-9\">\n                    <li>\n                        <span> Actual Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.actualWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Recognised Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.recognisedWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Correct Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.correctWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> accuracy - </span>\n                        <span class=\"pull-right\"> {{speech.accuracy}}% </span>\n                    </li>\n                    <li>\n                        <span> Completion Time - </span>\n                        <span class=\"pull-right\"> {{speech.completionTime}} seconds </span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -369,7 +434,18 @@ module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n    
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_text_diff___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_4_text_diff__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__models_speech_model__ = __webpack_require__("../../../../../src/app/models/speech.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__base_component__ = __webpack_require__("../../../../../src/app/base.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return KeyboardComponent; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -386,14 +462,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var KeyboardComponent = (function () {
+
+var KeyboardComponent = (function (_super) {
+    __extends(KeyboardComponent, _super);
     function KeyboardComponent(_AngularFireAuth, _db, _Router) {
-        this._AngularFireAuth = _AngularFireAuth;
-        this._db = _db;
-        this._Router = _Router;
-        this.isStopped = true;
-        this.translatedtext = "";
-        this.diff = new __WEBPACK_IMPORTED_MODULE_4_text_diff__();
+        var _this = _super.call(this) || this;
+        _this._AngularFireAuth = _AngularFireAuth;
+        _this._db = _db;
+        _this._Router = _Router;
+        _this.isStopped = true;
+        _this.translatedtext = "";
+        _this.diff = new __WEBPACK_IMPORTED_MODULE_4_text_diff__();
+        return _this;
     }
     KeyboardComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -425,7 +505,14 @@ var KeyboardComponent = (function () {
         message = message.replace(',  ', ', ');
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
+        message = message.replace('universe', 'Universe');
+        message = this.titleCase(message);
         return message.trim();
+    };
+    KeyboardComponent.prototype.titleCase = function (message) {
+        return message.split('. ').map(function (sentence) {
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        }).join('. ');
     };
     KeyboardComponent.prototype.logout = function () {
         var _this = this;
@@ -469,9 +556,9 @@ var KeyboardComponent = (function () {
     };
     KeyboardComponent.prototype.processData = function () {
         clearInterval(this.resetTimer);
-        var textDiff = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text')['value']);
+        var textDiff = this.diff.main(this.sampleText, document.getElementById('text')['value']);
         document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
-        var sampleTextArray = document.getElementById('text-sample').innerText.split(' ');
+        var sampleTextArray = this.sampleText.split(' ');
         var recognisedTextArray = document.getElementById('text')['value'].split(' ');
         this.speech = new __WEBPACK_IMPORTED_MODULE_6__models_speech_model__["a" /* Speech */]();
         this.speech.userName = this.user.displayName;
@@ -495,7 +582,7 @@ var KeyboardComponent = (function () {
         this._Router.navigate(['']);
     };
     return KeyboardComponent;
-}());
+}(__WEBPACK_IMPORTED_MODULE_7__base_component__["a" /* BaseComponent */]));
 KeyboardComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-keyboard',
@@ -534,7 +621,7 @@ var SpeechRecognition = (function () {
     function SpeechRecognition(lang, continuous, interimResults, maxAlternatives) {
         if ("webkitSpeechRecognition" in window) {
             this.initialise();
-            this._SpeechRecognition.lang = lang || 'en-UK';
+            this._SpeechRecognition.lang = 'en-IN';
             this._SpeechRecognition.continuous = !!continuous;
             this._SpeechRecognition.interimResults = !!interimResults;
             this._SpeechRecognition.maxAlternatives = maxAlternatives || 1;
@@ -616,7 +703,7 @@ exports = module.exports = __webpack_require__("../../../../css-loader/lib/css-b
 
 
 // module
-exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\np#text, p#text-sample, #result, #analysis {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result, #analysis {\n    height: 300px;\n    max-height: 300px;    \n}\n\nli {\n    margin-top: 10px;\n}", ""]);
+exports.push([module.i, "h2 {\n    margin:  0;\n    margin: 15px 0;\n    color: white;\n    font-weight: bold;\n    cursor: pointer;\n}\n\n.navbar {\n    background-color: #337ab7;\n}\n\nbutton {\n    margin-top: 12px;\n    font-weight: bold;\n    font-size: 20px;\n}\n\nspan.user-name {\n    color: yellow;\n    font-weight: bold;\n    text-transform: capitalize;\n    margin-top: 8px;\n    font-size: 25px;\n}\n\nh3 {\n    text-align: center;\n    margin: 0 0 10px 0;\n    font-weight: bold;\n}\n\np#text, #result, #analysis {\n    border: solid thin black;\n    text-align: justify;\n    height: 400px;\n    max-height: 400px;\n    word-wrap: break-word;\n    overflow-y: auto;\n    overflow-x: hidden;\n    padding: 10px;\n    line-height: 25px;\n    font-size: 20px;\n    margin-bottom: 30px;\n}\n\n#result, #analysis {\n    height: 300px;\n    max-height: 300px;    \n}\n\nli {\n    margin-top: 10px;\n}", ""]);
 
 // exports
 
@@ -629,7 +716,7 @@ module.exports = module.exports.toString();
 /***/ "../../../../../src/app/speech/speech.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Speech Recogniser</h2>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'\" (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'End Test'}}\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name\">Time - {{time || '00 : 00'}}</span>\n            </div>\n            <div class=\"col-lg-6\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Input</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>Output</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <p id=\"text-sample\">\n                The Universe is everything we can touch, feel, sense, measure or detect. It includes living things, planets, stars, galaxies,\n                dust clouds, light, and even time. Before the birth of the Universe, time, space and matter did not exist.\n                The Universe contains billions of galaxies, each containing millions or billions of stars. The space between\n                the stars and galaxies is largely empty. However, even places far from stars and planets contain scattered\n                particles of dust or a few hydrogen atoms per cubic centimeter. Space is also filled with radiation (e.g.\n                light and heat), magnetic fields and high energy particles (e.g. cosmic rays). The Universe is incredibly\n                huge. It would take a modern jet fighter more than a million years to reach the nearest star to the Sun.\n                Travelling at the speed of light (300,000 km per second), it would take 100,000 years to cross our Milky\n                Way galaxy alone. No one knows the exact size of the Universe, because we cannot see the edge – if there\n                is one. All we do know is that the visible Universe is at least 93 billion light years across. (A light year\n                is the distance light travels in one year – about 9 trillion km.)\n            </p>\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">recognised speech...</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <h3>Difference</h3>\n        </div>\n        <div class=\"col-lg-4\">\n            <h3>Analysis</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <div id=\"result\"></div>\n        </div>\n        <div class=\"col-lg-4\">\n            <div id=\"analysis\">\n                <br>\n                <ul *ngIf=\"speech\" class=\"col-lg-offset-1 col-lg-9\">\n                    <li>\n                        <span> Actual Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.actualWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Recognised Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.recognisedWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Correct Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.correctWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> accuracy - </span>\n                        <span class=\"pull-right\"> {{speech.accuracy}}% </span>\n                    </li>\n                    <li>\n                        <span> Completion Time - </span>\n                        <span class=\"pull-right\"> {{speech.completionTime}} seconds </span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</div>"
+module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n        <nav class=\"navbar navbar-default col-lg-12\">\n            <div class=\"navbar-header col-lg-2\">\n                <h2 (click)=\"home()\">Home Page</h2>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" id=\"btn-test\" [class]=\"isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'\" (click)=\"timer(isStopped);\">\n                    {{isStopped ? 'Start Test' : 'End Test'}}\n                </button>\n            </div>\n            <div class=\"col-lg-2\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name\">Time - {{time || '00 : 00'}}</span>\n            </div>\n            <div class=\"col-lg-6\">\n                <span *ngIf=\"user\" class=\"navbar-brand user-name pull-right text-right\">Hello {{user?.displayName}}!</span>\n            </div>\n            <div class=\"col-lg-1\">\n                <button *ngIf=\"user\" (click)=\"logout();\" class=\"btn btn-danger pull-right col-lg-12\">Logout</button>\n            </div>\n            <div [class]=\"user ? 'col-lg-1' : 'col-lg-10'\">\n                <button *ngIf=\"!user\" (click)=\"login();\" class=\"btn btn-success pull-right\">Login</button>\n            </div>\n        </nav>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <h3>Sample</h3>\n        </div>\n        <div class=\"col-lg-6\">\n            <h3>User Input</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-6\">\n            <img id=\"image-sample\" src=\"./assets/sample.png\" alt=\"sample-text\">\n        </div>\n        <div id=\"text-generated\" class=\"col-lg-6\">\n            <p id=\"text\">recognised speech...</p>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <h3>Difference</h3>\n        </div>\n        <div class=\"col-lg-4\">\n            <h3>Analysis</h3>\n        </div>\n    </div>\n    <div class=\"row\">\n        <div class=\"col-lg-8\">\n            <div id=\"result\"></div>\n        </div>\n        <div class=\"col-lg-4\">\n            <div id=\"analysis\">\n                <br>\n                <ul *ngIf=\"speech\" class=\"col-lg-offset-1 col-lg-9\">\n                    <li>\n                        <span> Actual Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.actualWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Recognised Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.recognisedWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> Correct Word Count - </span>\n                        <span class=\"pull-right\"> {{speech.correctWordCount}} </span>\n                    </li>\n                    <li>\n                        <span> accuracy - </span>\n                        <span class=\"pull-right\"> {{speech.accuracy}}% </span>\n                    </li>\n                    <li>\n                        <span> Completion Time - </span>\n                        <span class=\"pull-right\"> {{speech.completionTime}} seconds </span>\n                    </li>\n                </ul>\n            </div>\n        </div>\n    </div>\n</div>"
 
 /***/ }),
 
@@ -647,7 +734,18 @@ module.exports = "<div class=\"container-fluid\">\n    <div class=\"row\">\n    
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_angularfire2_database__ = __webpack_require__("../../../../angularfire2/database/index.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__speech_recognition__ = __webpack_require__("../../../../../src/app/speech-recognition.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__models_speech_model__ = __webpack_require__("../../../../../src/app/models/speech.model.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__base_component__ = __webpack_require__("../../../../../src/app/base.component.ts");
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SpeechComponent; });
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = Object.setPrototypeOf ||
+        ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+        function (d, b) { for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p]; };
+    return function (d, b) {
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -665,14 +763,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
-var SpeechComponent = (function () {
+
+var SpeechComponent = (function (_super) {
+    __extends(SpeechComponent, _super);
     function SpeechComponent(_AngularFireAuth, _db, _Router) {
-        this._AngularFireAuth = _AngularFireAuth;
-        this._db = _db;
-        this._Router = _Router;
-        this.isStopped = true;
-        this.translatedtext = "";
-        this.diff = new __WEBPACK_IMPORTED_MODULE_4_text_diff__();
+        var _this = _super.call(this) || this;
+        _this._AngularFireAuth = _AngularFireAuth;
+        _this._db = _db;
+        _this._Router = _Router;
+        _this.isStopped = true;
+        _this.translatedtext = "";
+        _this.diff = new __WEBPACK_IMPORTED_MODULE_4_text_diff__();
+        return _this;
     }
     SpeechComponent.prototype.ngOnInit = function () {
         var _this = this;
@@ -695,7 +797,7 @@ var SpeechComponent = (function () {
         if (this._SpeechRecognition) {
             return;
         }
-        this._SpeechRecognition = this._SpeechRecognition || new __WEBPACK_IMPORTED_MODULE_6__speech_recognition__["a" /* SpeechRecognition */]('en-Uk', true, true, 1);
+        this._SpeechRecognition = this._SpeechRecognition || new __WEBPACK_IMPORTED_MODULE_6__speech_recognition__["a" /* SpeechRecognition */]('en-GB', true, true, 1);
         this._SpeechRecognition.onresult = this.onResult.bind(this);
         this._SpeechRecognition.start();
         this.speech = null;
@@ -732,7 +834,14 @@ var SpeechComponent = (function () {
         message = message.replace(',  ', ', ');
         message = message.replace('!  ', '! ');
         message = message.replace('?  ', '? ');
+        message = message.replace('universe', 'Universe');
+        message = this.titleCase(message);
         return message.trim();
+    };
+    SpeechComponent.prototype.titleCase = function (message) {
+        return message.split('. ').map(function (sentence) {
+            return sentence.charAt(0).toUpperCase() + sentence.slice(1);
+        }).join('. ');
     };
     SpeechComponent.prototype.logout = function () {
         var _this = this;
@@ -777,9 +886,9 @@ var SpeechComponent = (function () {
     };
     SpeechComponent.prototype.processData = function () {
         clearInterval(this.resetTimer);
-        var textDiff = this.diff.main(document.getElementById('text-sample').innerText, document.getElementById('text').innerText);
+        var textDiff = this.diff.main(this.sampleText, document.getElementById('text').innerText);
         document.getElementById('result').innerHTML = this.diff.prettyHtml(textDiff);
-        var sampleTextArray = document.getElementById('text-sample').innerText.split(' ');
+        var sampleTextArray = this.sampleText.split(' ');
         var recognisedTextArray = document.getElementById('text').innerText.split(' ');
         this.speech = new __WEBPACK_IMPORTED_MODULE_7__models_speech_model__["a" /* Speech */]();
         this.speech.userName = this.user.displayName;
@@ -803,7 +912,7 @@ var SpeechComponent = (function () {
         this._Router.navigate(['']);
     };
     return SpeechComponent;
-}());
+}(__WEBPACK_IMPORTED_MODULE_8__base_component__["a" /* BaseComponent */]));
 SpeechComponent = __decorate([
     __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__angular_core__["_11" /* Component */])({
         selector: 'app-recognition',
