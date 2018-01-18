@@ -1,4 +1,4 @@
-h2 {
+h4 {
     margin:  0;
     margin: 15px 0;
     color: white;
@@ -11,17 +11,14 @@ h2 {
 }
 
 button {
-    margin-top: 12px;
+    margin-top: 7px;
     font-weight: bold;
-    font-size: 20px;
 }
 
 span.user-name {
     color: yellow;
     font-weight: bold;
     text-transform: capitalize;
-    margin-top: 8px;
-    font-size: 25px;
 }
 
 h3 {
@@ -33,14 +30,13 @@ h3 {
 p#text, #result, #analysis {
     border: solid thin black;
     text-align: justify;
-    height: 400px;
+    /* height: 400px; */
     max-height: 400px;
     word-wrap: break-word;
     overflow-y: auto;
     overflow-x: hidden;
     padding: 10px;
     line-height: 25px;
-    font-size: 20px;
     margin-bottom: 30px;
 }
 
@@ -51,4 +47,8 @@ p#text, #result, #analysis {
 
 li {
     margin-top: 10px;
+}
+
+#image-sample {
+    width: 100%;
 }

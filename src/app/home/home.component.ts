@@ -14,11 +14,16 @@ export class HomeComponent implements OnInit {
     private user: any;
     private _SpeechRecognition: SpeechRecognition;
     private translatedtext: string = "";
+    private section: number = 1;
 
     constructor(private _AngularFireAuth: AngularFireAuth,
         private _Router: Router) { }
 
     public ngOnInit(): void {
+        let section: string = sessionStorage.getItem('section');
+        if (section && !isNaN(parseInt(section))) {
+            this.section = parseInt(section);
+        }
         this._AngularFireAuth.authState.subscribe((user: firebase.User) => {
             if (user && user.uid) {
                 this.user = {
@@ -112,6 +117,7 @@ export class HomeComponent implements OnInit {
         this._AngularFireAuth.auth.signOut().then((response: any) => {
             this.user = null;
             sessionStorage.removeItem('user');
+            sessionStorage.removeItem('section');
             sessionStorage.removeItem('practiceTestPassed');
         });
     }
@@ -126,5 +132,10 @@ export class HomeComponent implements OnInit {
 
     private speechTest(): void {
         this._Router.navigate(['speech']);
+    }
+
+    private setSection(isNext: boolean) {
+        isNext ? ++this.section : --this.section;
+        sessionStorage.setItem('section', this.section.toString());
     }
 }

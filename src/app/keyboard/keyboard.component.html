@@ -2,17 +2,17 @@
     <div class="row">
         <nav class="navbar navbar-default col-lg-12">
             <div class="navbar-header col-lg-2">
-                <h2 (click)="home()">Home Page</h2>
+                <h4 (click)="home()">Home Page</h4>
             </div>
-            <div class="col-lg-1">
-                <button *ngIf="user" id="btn-test" [class]="isStopped ? 'btn btn-success col-lg-12' : 'btn btn-danger col-lg-12'" (click)="timer(isStopped);">
+            <div class="col-lg-2">
+                <button *ngIf="user" id="btn-test" [class]="isStopped ? 'btn btn-success col-lg-6' : 'btn btn-danger col-lg-6'" (click)="timer(isStopped);">
                     {{isStopped ? 'Start Test' : 'End Test'}}
                 </button>
             </div>
             <div class="col-lg-2">
                 <span *ngIf="user" class="navbar-brand user-name">Time - {{time || '00 : 00'}}</span>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-5">
                 <span *ngIf="user" class="navbar-brand user-name pull-right text-right">Hello {{user?.displayName}}!</span>
             </div>
             <div class="col-lg-1">
